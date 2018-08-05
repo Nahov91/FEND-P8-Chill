@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import logo2 from "./images/logo2.png";
-import MapContainer from './MapContainer'
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import Map from './Map'
 export class App extends Component {
   render() {
     return (
@@ -17,7 +16,7 @@ export class App extends Component {
           </a>
           <img id="logo" src={logo2} alt="home" />
         </header>
-        <MapContainer />
+        <Map />
       </div>
     );
   }
