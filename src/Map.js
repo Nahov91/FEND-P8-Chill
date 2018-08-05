@@ -5,7 +5,7 @@ export class Map extends Component {
   render() {
 
     const ChillMap = withGoogleMap(props => (
-      <GoogleMap defaultCenter= {{lat: 47.1640061, lng:20.1927142}} defaultZoom= {14} >
+      <GoogleMap center= {{lat: 47.1640061, lng:20.1927142}} defaultZoom= {14} >
       </GoogleMap>
     ))
     return (
