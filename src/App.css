@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-header {
+#header {
   display: grid;
   grid-template-areas: 
   "menu logo";
@@ -12,6 +12,9 @@ header {
   width: 100%;
   height: 40px;
   background: #9CD501;
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.18);
+  z-index: 3;
+  position: fixed;
 }
 #logo {
   grid-area: logo;
@@ -32,7 +35,25 @@ Map {
   height: 100vh;
 }
 
-mapContainer {
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-areas: 
+  "sidebar map-wrapper";
+  height:100vh;
+}
+
+.map-wrapper {
+  grid-area: map-wrapper;
   height: 100%;
-  width: 100%
+  width: 100%;
+  position: fixed;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 2;
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.18);
 }
