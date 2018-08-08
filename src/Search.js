@@ -53,7 +53,7 @@ export class Search extends Component {
     let locationResults = result.locationResults;
 
     return (
-      <div>
+      <div className="search-components" >
         <input
           id="search-field"
           type="text"
@@ -61,7 +61,7 @@ export class Search extends Component {
           onChange={event => this.updateText(event.target.value, event)}
         />
         {locationOk && (
-          <ol id="list">
+          <ol className="search-items-list" >
             {locationResults.map((item, index) => (
               <li key={index}>{item.name} </li>
             ))}{" "}

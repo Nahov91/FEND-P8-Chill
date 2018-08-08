@@ -52,35 +52,48 @@ Map {
 
 .sidebar {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto;
   grid-template-columns: auto;
   grid-area: sidebar;
-  grid-template-areas: 
-  "search"
-  "list";
+  grid-template-areas: "searchComponents";
   height: 100%;
   background: rgba(255, 255, 255, 0.9);
   z-index: 2;
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.18);
 }
 
-.sidebar div {
+.search-components {
   display: grid;
-  grid-area: search;
-  top: 45px;
-  z-index: 2;
-  position: absolute;
-  padding: 15px;
+  grid-area: searchComponents;
+  grid-template-areas: 
+  "search"
+  "list";
+  margin-top: 45px;
+  padding: 10px;
+  align-items:start; 
 }
 
 #search-field {
+  grid-area: search;
   height: 28px;
+  width: 100%;
   border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.18);
 }
 
-ol #list {
-  grid-area: list;
+.search-items-list {
+grid-area: list;
+align-self: start;
+}
 
+ol {
+  list-style-type: none;
+  padding:0;
+  text-align: left;
+}
+
+ol li {
+  border-top:1px solid rgba(0, 0, 0, 0.08);
+  padding: 6px 0;
 }
