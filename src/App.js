@@ -1,8 +1,34 @@
 import React, { Component } from "react";
 import "./App.css";
 import logo2 from "./images/logo2.png";
-import Map from "./Map";
+import Map from "./Map.js";
+import * as APIs from "./APIs.js";
+import Search from "./Search";
+
 export class App extends Component {
+  state = {
+    locationsArray: [],
+    prevLocations: []
+  };
+ 
+  componentDidMount() {
+    APIs.getLocationsAll().then((locationsArray) => {
+      
+      this.setState({ locationsArray });
+      this.setState({prevLocations:locationsArray});
+    });
+  }
+
+  refereshLoc = (searchResults, query) => {
+    if (query) {
+      this.setState((state)=>({
+        locationsArray: searchResults
+      })) /* if there is a searchquery, then locationsArray will be based on that */
+    } else {
+      this.setState({ locationsArray: this.state.prevLocations})
+    } /* otherwise it will be the previous state */
+  }
+
   render() {
     return (
       <div className="App">
@@ -16,12 +42,14 @@ export class App extends Component {
           </a>
           <img id="logo" src={logo2} alt="home" />
         </header>
-        <div className="main-content">
-          <div className="sidebar" />
-          <div className="map-wrapper">
-            <Map />
-          </div>
+      <div className='main-content'>
+        <div className="sidebar">
+          <Search id="search" locationsArray={this.state.locationsArray} onUserDidSearch= {this.refereshLoc}/>
         </div>
+        <div className="map-wrapper">
+          <Map locationsArray={this.state.locationsArray} isMarkerShown={true}/>
+        </div>
+      </div>
       </div>
     );
   }
