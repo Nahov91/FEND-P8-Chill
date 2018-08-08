@@ -8,12 +8,13 @@ import Search from "./Search";
 export class App extends Component {
   state = {
     locationsArray: [],
-    prevLocations: []
+    prevLocations: [],
+    venueCategoriesArray: []
   };
  
   componentDidMount() {
     APIs.getLocationsAll().then((locationsArray) => {
-      
+      /* this.setState({venueCategoriesArray}) */
       this.setState({ locationsArray });
       this.setState({prevLocations:locationsArray});
     });
@@ -44,10 +45,10 @@ export class App extends Component {
         </header>
       <div className='main-content'>
         <div className="sidebar">
-          <Search id="search" locationsArray={this.state.locationsArray} onUserDidSearch= {this.refereshLoc}/>
+          <Search id="search" locationsArray={this.state.locationsArray}  onUserDidSearch= {this.refereshLoc}/>
         </div>
         <div className="map-wrapper">
-          <Map locationsArray={this.state.locationsArray} isMarkerShown={true}/>
+          <Map locationsArray={this.state.locationsArray} venueCategoriesArray={this.state.venueCategoriesArray} isMarkerShown={true}/>
         </div>
       </div>
       </div>
