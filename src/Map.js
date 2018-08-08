@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 
 
 export class Map extends Component {
+
+state={
+  isOpen:false,
+
+  onToggleOpen: ({isOpen}) => () =>({isOpen: !isOpen,})
+}
+
   render() {
     let markersArray =[]
     let {locationsArray} = this.props
@@ -27,7 +34,11 @@ export class Map extends Component {
         center= {{lat: 47.1640061, lng:20.1927142}} 
         defaultZoom= {14} >
           {markersArray.map((marker, index)=>(
-          <Marker key={index} title= {marker.title} position={{lat: marker.lat, lng: marker.lng}} />
+          <Marker key={index} title= {marker.title} position={{lat: marker.lat, lng: marker.lng}} onClick={props.onToggleOpen}>
+          {props.isOpen && 
+          <InfoWindow onCloseClick={props.onToggleOpen}>
+          </InfoWindow>}
+          </Marker>
           ))}
       </GoogleMap>
     ));
