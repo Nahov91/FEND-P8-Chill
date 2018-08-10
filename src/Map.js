@@ -34,10 +34,10 @@ state={
         center= {{lat: 47.1640061, lng:20.1927142}} 
         defaultZoom= {14} >
           {markersArray.map((marker, index)=>(
-          <Marker key={index} title= {marker.title} position={{lat: marker.lat, lng: marker.lng}} onClick={props.onToggleOpen}>
-          {props.isOpen && 
-          <InfoWindow onCloseClick={props.onToggleOpen}>
-          </InfoWindow>}
+          <Marker key={index} title= {marker.title} position={{lat: marker.lat, lng: marker.lng}} onClick={props.onToggleOpen}> 
+          <InfoWindow>
+            <h3>{marker.title}</h3>
+          </InfoWindow>
           </Marker>
           ))}
       </GoogleMap>
