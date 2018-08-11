@@ -2,12 +2,15 @@ import React, { Component } from 'react'
 import {InfoWindow} from 'react-google-maps'
 
 function PlaceDetails(props) {
+  let marker = props.marker
+
+
   return(
     <InfoWindow>
       <div>
-      <h3>{props.marker.name}</h3>
-      <p>This is some information, that you want to see</p>
-      <p>And here will be some pictures as well</p>
+      <h3>{marker.name}</h3>
+      <h4>{marker.categories[0].name} </h4>
+      <address>{marker.location.address}</address>
       </div>
     </InfoWindow>
   )

@@ -28,6 +28,7 @@ handleClick(event, key) {
 
   render() {
     let marker= this.props.marker
+    console.log(marker)
 
     return (
       <Marker key={marker.title} position={{lat: marker.location.lat, lng: marker.location.lng}}
