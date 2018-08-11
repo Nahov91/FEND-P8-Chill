@@ -8,16 +8,18 @@ export default class PlaceMarker extends Component {
     infoWindowOpen: PropTypes.bool,
     marker: PropTypes.object,
   }
+
   constructor(props){
       super(props);
   
-  this.state= {
+    this.state= {
       infoWindowOpen: false
   }
 }
 
 
-
+/* Handling the click event with a toggle like behaviour
+On click InfoWindow opens or closes based on the boolean */
 handleClick(event, key) {
     let markerClick = event
     let infoWindowOpen= this.state.infoWindowOpen

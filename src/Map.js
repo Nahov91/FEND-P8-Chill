@@ -8,12 +8,13 @@ constructor(props){
   super(props);
 }
 
-
   render() {
+    /* Creating Gmaps with its default required props */
     const ChillMap = withGoogleMap(props => (
       <GoogleMap 
         center= {{lat: 47.1640061, lng:20.1927142}} 
         defaultZoom= {14} >
+        /* Mapping over the search results to create marker(s) */
           {this.props.searchResults.map((marker)=>(
         <PlaceMarker 
         key={marker.id} 

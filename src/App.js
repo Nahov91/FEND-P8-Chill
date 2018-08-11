@@ -5,6 +5,9 @@ import Map from "./Map.js";
 import Search from "./Search";
 import escapeRegExp from 'escape-string-regexp'
 
+
+/******* Variables for API *******/
+
 export const F_api =
   "https://api.foursquare.com/v2"; /* Foursquare API link beginning */
 export const Client_ID =
@@ -12,7 +15,8 @@ export const Client_ID =
 export const Client_Secret =
   "SFYLU0CI32HUT5BOTO1R4R14SDYLTYJC2ACQYQ210HKAJX0Z"; /* Foursquare scret key */
 
-/* Venue categories */
+
+/****** Venue categories ******/
 
 export const aquarium = "4fceea171983d5d06c3e9823";
 export const art_gallery = "4bf58dd8d48988d1e2931735";
@@ -33,7 +37,10 @@ class App extends Component {
       query: ""
     };
   }
+
   componentDidMount() {
+    /* When the component is mounted  we fetch the data from FourSquare */
+    /* If there is an erro we are console logging it for now */
     fetch(
       `${F_api}/venues/search?ll=47.1640061,20.1927142&intent=browse&radius=10000&limit=20&categoryId=${aquarium},${art_gallery},${cafe},${campground},${library},${museum},${park},${spa},${zoo}&client_id=${Client_ID}&client_secret=${Client_Secret}&v=20180708`
     )
@@ -45,12 +52,14 @@ class App extends Component {
         .catch(error=> console.log("error = ",error))
   }
 
+  /* Updates the query to whatever user types in */
   updateQuery(query) {
     this.setState({ query: query })
   }
 
   render() {
     let searchResults
+    /* Checking if the locations are not undefined */
     if (this.state.locationsArray!==undefined) {
       if (this.state.query) {
         const match = new RegExp(escapeRegExp(this.state.query), 'i')

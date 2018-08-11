@@ -3,17 +3,13 @@ import React, { Component } from "react";
 class Search extends Component {
   constructor(props){
     super(props);
-
-
-/*   this.state = {
-    query: "",
-  };  */
   }
 
   render() {
     let searchResults = this.props.searchResults
     let locationsArray = this.props.locationsArray
 
+    /* Returning a list based on the searchResults */
     return (
         <div id="search-components" >
           <ol className="search-items-list" >
