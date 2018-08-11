@@ -74,10 +74,12 @@ Map {
 }
 
 #search-field {
+  position: sticky;
+  top:45px;
   grid-area: search;
   height: 28px;
   width: 90%;
-  margin: 10px;
+  margin: 5px;
   border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.18);
