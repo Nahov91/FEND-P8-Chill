@@ -1,51 +1,29 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
+import { withGoogleMap, GoogleMap } from 'react-google-maps';
+import PlaceMarker from './PlaceMarker'
 
+class Map extends Component {
 
-export class Map extends Component {
-
-state={
-  isOpen:false,
-
-  onToggleOpen: ({isOpen}) => () =>({isOpen: !isOpen,})
+constructor(props){
+  super(props);
 }
 
+
   render() {
-    let markersArray =[]
-    let {locationsArray} = this.props
-    let locationOk = false
-    
-    if(locationsArray!==undefined&&locationsArray!==null&&locationsArray.length>0) locationOk = true
-    if (locationOk) {
-        let marker= {}      
-    locationsArray.map((loc) => {
-      marker= { 
-        lat: loc.location.lat,
-        lng: loc.location.lng,
-        title: loc.name,
-        venueId: loc.id}
-        
-        markersArray.push(marker)
-    })
-  }
     const ChillMap = withGoogleMap(props => (
       <GoogleMap 
-        isMarkerShown={true}  
         center= {{lat: 47.1640061, lng:20.1927142}} 
         defaultZoom= {14} >
-          {markersArray.map((marker, index)=>(
-          <Marker key={index} title= {marker.title} position={{lat: marker.lat, lng: marker.lng}} onClick={props.onToggleOpen}> 
-          <InfoWindow>
-            <h3>{marker.title}</h3>
-          </InfoWindow>
-          </Marker>
+          {this.props.searchResults.map((marker)=>(
+        <PlaceMarker 
+        key={marker.id} 
+        marker={marker} />
           ))}
       </GoogleMap>
-    ));
+    ))
     return (
       <div>
         <ChillMap
-          markers={markersArray} 
           containerElement={ <div style={{ height: `100vh`, width: `100vw` }} /> }
           mapElement={ <div style={{ height: `100%` }} /> }
         />

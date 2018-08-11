@@ -21,12 +21,14 @@ export const F_api =
   export const spa = "4bf58dd8d48988d1ed941735"
   export const zoo = "4bf58dd8d48988d17b941735"
 
-export const getLocationsAll = () =>
+/* export const getLocationsAll = () =>
   fetch(
     `${F_api}/venues/search?ll=47.1640061,20.1927142&intent=browse&radius=10000&limit=20&categoryId=${aquarium},${art_gallery},${cafe},${campground},${library},${museum},${park},${spa},${zoo}&client_id=${Client_ID}&client_secret=${Client_Secret}&v=20180708`
   )
     .then(res => res.json())
-    .then(data => data.response.venues); 
+    .then(data => this.setState({
+      locationsArray: data.response.venues
+    }));  */
 
 
     

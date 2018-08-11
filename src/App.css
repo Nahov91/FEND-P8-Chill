@@ -52,11 +52,14 @@ Map {
 
 .sidebar {
   display: grid;
-  grid-template-rows: auto;
+  grid-template-rows: auto 1fr;
   grid-template-columns: auto;
   grid-area: sidebar;
-  grid-template-areas: "searchComponents";
+  grid-template-areas: 
+  "search"
+  "searchComponents";
   height: 100%;
+  padding-top: 45px;
   background: rgba(255, 255, 255, 0.9);
   z-index: 2;
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.18);
@@ -65,21 +68,20 @@ Map {
 .search-components {
   display: grid;
   grid-area: searchComponents;
-  grid-template-areas: 
-  "search"
+  grid-template-areas:
   "list";
-  margin-top: 45px;
-  padding: 10px;
   align-items:start; 
 }
 
 #search-field {
   grid-area: search;
   height: 28px;
-  width: 100%;
+  width: 90%;
+  margin: 10px;
   border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.18);
+  padding-left: 8px;
 }
 
 .search-items-list {
@@ -91,6 +93,7 @@ ol {
   list-style-type: none;
   padding:0;
   text-align: left;
+  margin: 10px;
 }
 
 ol li {
