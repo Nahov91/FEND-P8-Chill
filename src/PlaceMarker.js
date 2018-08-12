@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Marker} from 'react-google-maps' 
 import PlaceDetails from './PlaceDetails'
+import Markericon from './images/markers/x64/park.png'
 
 export default class PlaceMarker extends Component {
   static propTypes = {
@@ -49,7 +50,7 @@ handleClick(event, key) {
 
     return (
       <Marker key={marker.title} position={{lat: marker.location.lat, lng: marker.location.lng}}
-      onClick={(event, key) => this.handleClick(event, this.props.marker.id)} >
+      onClick={(event, key) => this.handleClick(event, this.props.marker.id)} icon={Markericon} >
       <React.Fragment>
           {this.state.infoWindowOpen===true&&(
       <PlaceDetails marker={marker} />

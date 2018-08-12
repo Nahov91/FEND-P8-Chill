@@ -101,4 +101,10 @@ ol {
 ol li {
   border-top:1px solid rgba(0, 0, 0, 0.08);
   padding: 6px 0;
+  cursor: pointer;
+}
+
+.gmnoprint:after {
+height: 80px;
+width: 80px;
 }
