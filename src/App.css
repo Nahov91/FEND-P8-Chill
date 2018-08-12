@@ -98,13 +98,15 @@ ol {
   margin: 10px;
 }
 
-ol li {
+.search-items-list li {
   border-top:1px solid rgba(0, 0, 0, 0.08);
   padding: 6px 0;
   cursor: pointer;
+  padding-left: 5px;
+  border-radius: 3px;
 }
 
-.gmnoprint:after {
-height: 80px;
-width: 80px;
+.search-items-list li:hover {
+  background: #9CD501;
+  color: #fff;
 }
