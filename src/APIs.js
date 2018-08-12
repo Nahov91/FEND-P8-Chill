@@ -34,8 +34,8 @@ export const F_api =
     
     /* fetching the venues details */
 
- export const getDetails = (venueId) => {
-    let detailsURL=[`/venues/${venueId}?`, `client_id=${Client_ID}`, `&client_secret=${Client_Secret}`].join("")
+ export const getDetails = (id) => {
+    let detailsURL=[`/venues/${id}?`, `client_id=${Client_ID}`, `&client_secret=${Client_Secret}`].join("")
 
 
 return fetch(`${F_api}${detailsURL}`).then(res=>res.json()).then(data=>data.response.venue)

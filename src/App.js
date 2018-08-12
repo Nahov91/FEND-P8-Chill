@@ -4,7 +4,7 @@ import logo2 from "./images/logo2.png";
 import Map from "./Map.js";
 import Search from "./Search";
 import escapeRegExp from 'escape-string-regexp'
-import PlaceDetails from './PlaceDetails'
+/* import PlaceDetails from './PlaceDetails' */
 
 
 /******* Variables for API *******/
@@ -45,13 +45,16 @@ class App extends Component {
     this.state = {
       locationsArray: [],
       query: "",
-      likesArray:[]
-    };
+      likesArray:[],
+      selectedMarker: ''
+    }
+
+    this.onHandleClick = this.onHandleClick.bind(this)
   }
 
   componentDidMount() {
-    /* When the component is mounted  we fetch the data from FourSquare */
-    /* If there is an erro we are console logging it for now */
+    /* When the component is mounted we fetch the data from FourSquare */
+    /* If there is an error we are console logging it for now */
     fetch(
       `${F_api}/search?ll=47.1640061,20.1927142&intent=browse&radius=10000&limit=20&categoryId=${aquarium},${art_gallery},${cafe},${campground},${library},${museum},${park},${spa},${zoo}&client_id=${Client_ID}&client_secret=${Client_Secret}&v=20180708`
     )
@@ -78,7 +81,11 @@ class App extends Component {
     this.setState({ query: query })
   }
 
-  
+  onHandleClick(event, key){
+    let selectedMarker = this.state.locationsArray.filter(loc=>loc.id===key)
+    this.setState({selectedMarker: selectedMarker})
+  }
+
 
   render() {
     let searchResults
@@ -117,6 +124,7 @@ class App extends Component {
             <Search
               locationsArray={this.state.locationsArray}
               searchResults={searchResults}
+              onHandleClick={this.onHandleClick}
             />
           </div>
           <div className="map-wrapper">
@@ -125,6 +133,8 @@ class App extends Component {
               isMarkerShown={true}
               onMarkerClick={this.toggleInfoWindow}
               searchResults={searchResults}
+              onHandleClick={this.onHandleClick}
+              selectedMarker={this.state.selectedMarker}
             />
           </div>
         </div>

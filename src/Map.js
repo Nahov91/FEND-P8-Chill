@@ -9,16 +9,20 @@ constructor(props){
 }
 
   render() {
+    console.log(this.props.selectedMarker)
+    let selectedMarker = this.props.selectedMarker
     /* Creating Gmaps with its default required props */
     const ChillMap = withGoogleMap(props => (
       <GoogleMap 
         center= {{lat: 47.1640061, lng:20.1927142}} 
         defaultZoom= {14} >
-        /* Mapping over the search results to create marker(s) */
+         {/* Mapping over the search results to create marker(s)  */}
           {this.props.searchResults.map((marker)=>(
         <PlaceMarker 
         key={marker.id} 
-        marker={marker} />
+        marker={marker}
+        id={marker.id}
+        selectedMarker={selectedMarker} />
           ))}
       </GoogleMap>
     ))
