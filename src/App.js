@@ -31,12 +31,13 @@ export const zoo = "4bf58dd8d48988d17b941735";
 
 /*** Actual fetching likes data from Foursquare */
 /** Needs {venue_Id} */
-export const getLikes= (venue_Id)=>{
-  let likesUrl=`${venue_Id}/likes?&client_id=${Client_ID}&client_secret=${Client_Secret}&v=20180708`
-  return	fetch(`${F_api}${likesUrl}`)
+export const getDetails= (id)=>{
+  let detailsUrl=`/${id}?&client_id=${Client_ID}&client_secret=${Client_Secret}&v=20180708`
+  return	fetch(`${F_api}${detailsUrl}`)
   .then(res => res.json())
   .then(data => data.response.venue)
   }
+
 
 class App extends Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class App extends Component {
     this.state = {
       locationsArray: [],
       query: "",
-      likesArray:[],
+      detailsArray:[],
       selectedMarker: ''
     }
 
@@ -56,7 +57,7 @@ class App extends Component {
     /* When the component is mounted we fetch the data from FourSquare */
     /* If there is an error we are console logging it for now */
     fetch(
-      `${F_api}/search?ll=47.1640061,20.1927142&intent=browse&radius=10000&limit=20&categoryId=${aquarium},${art_gallery},${cafe},${campground},${library},${museum},${park},${spa},${zoo}&client_id=${Client_ID}&client_secret=${Client_Secret}&v=20180708`
+      `${F_api}/search?ll=47.1640061,20.1927142&intent=browse&radius=10000&limit=5&categoryId=${aquarium},${art_gallery},${cafe},${campground},${library},${museum},${park},${spa},${zoo}&client_id=${Client_ID}&client_secret=${Client_Secret}&v=20180708`
     )
       .then(res => res.json())
       .then(data =>
@@ -64,16 +65,7 @@ class App extends Component {
           locationsArray: data.response.venues
         }))
         .catch(error=> console.log("venue fetching error = ",error))
-
-
-        /**Like fetch testing (Works) */
-    fetch(`${F_api}/564c8efd498ef8d3cfc8fc2c/likes?&client_id=${Client_ID}&client_secret=${Client_Secret}&v=20180708`)
-      .then(res => res.json())
-      .then (data=>
-        this.setState({
-          likesArray: data.response.venues
-        }))
-        .catch(error=> console.log("Like fetching error = ", error))
+        
   }
 
   /* Updates the query to whatever user types in */

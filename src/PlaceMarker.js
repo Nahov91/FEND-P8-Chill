@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Marker} from 'react-google-maps' 
 import PlaceDetails from './PlaceDetails'
 import Markericon from './images/markers/x64/park.png'
+/* import { F_api, Client_ID, Client_Secret, getLikes, getDetails } from './App' */
 
 export default class PlaceMarker extends Component {
   static propTypes = {
@@ -14,7 +15,7 @@ export default class PlaceMarker extends Component {
       super(props);
   
     this.state= {
-      infoWindowOpen: false
+      infoWindowOpen: false,
   }
 
   this.handleClick.bind(this)
@@ -42,10 +43,10 @@ handleClick(event, key) {
       })
     })
 
+    /* getDetails(marker.id)
+    .then(data =>
+      ) */
 
-    if(this.props.selectedMarker.id===marker.id){
-
-    }
 
 
     return (
@@ -53,7 +54,7 @@ handleClick(event, key) {
       onClick={(event, key) => this.handleClick(event, this.props.marker.id)} icon={Markericon} >
       <React.Fragment>
           {this.state.infoWindowOpen===true&&(
-      <PlaceDetails marker={marker} />
+      <PlaceDetails marker={marker}  />
           )}
       </React.Fragment>
       </Marker>
