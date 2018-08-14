@@ -7,7 +7,8 @@ class PlaceDetails extends Component {
   state = {
     infoDetails: {},
     likes: "",
-    description: ""
+    description: "",
+    bestPhoto: ""
   };
 
   render() {
@@ -22,25 +23,34 @@ class PlaceDetails extends Component {
     getDetails(props.marker.id).then(data => {
       const venueLikes = data.likes.summary;
       const venueDescription = data.description;
+      const bestPhotoURL =
+        "${data.bestPhoto.prefix}300x300{data.bestPhoto.suffix}";
 
       this.setState({
         infoDetails: data,
         likes: venueLikes,
-        description: venueDescription
+        description: venueDescription,
+        bestPhoto: bestPhotoURL
       });
     });
 
     return (
       <InfoWindow>
-        <div>
-          <h3>{marker.name}</h3>
-          <h4>{marker.categories[0].name} </h4>
-          <address>{marker.location.address}</address>
-          <img src={categoryIconURL} alt={marker.categories[0].name} />
+        <div className="infowindow">
+          <div className="image-wrapper">
+            <img className="best-photo" src={this.state.bestPhoto} alt={marker.name} />
+            <h3 className="venue-name" >{marker.name}</h3>
+          </div>
+          <div className="details">
+            <img className="category-image" src={categoryIconURL} alt={marker.categories[0].name} />
+            <h4 className="venue-category">{marker.categories[0].name} </h4>
+            <address className="venue-location">
+              {marker.location.address}
+            </address>
+          </div>
           <p className="description"> {this.state.description} </p>
-          <p className="likes">Likes: {this.state.likes} </p>{" "}
-          {/* Quota reached, so dummy this time */}
-          <img id="poweredBy" src={Foursquare} alt="Powered by Foursquare" />
+          <p className="likes">{this.state.likes} </p>
+          <img id="powered-by" src={Foursquare} alt="Powered by Foursquare" />
         </div>
       </InfoWindow>
     );

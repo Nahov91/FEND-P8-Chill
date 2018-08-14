@@ -4,7 +4,7 @@ import logo2 from "./images/logo2.png";
 import Map from "./Map.js";
 import Search from "./Search";
 import escapeRegExp from 'escape-string-regexp'
-/* import PlaceDetails from './PlaceDetails' */
+
 
 
 /******* Variables for API *******/
