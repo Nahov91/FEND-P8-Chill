@@ -57,7 +57,7 @@ class App extends Component {
     /* When the component is mounted we fetch the data from FourSquare */
     /* If there is an error we are console logging it for now */
     fetch(
-      `${F_api}/search?ll=47.1640061,20.1927142&intent=browse&radius=10000&limit=5&categoryId=${aquarium},${art_gallery},${cafe},${campground},${library},${museum},${park},${spa},${zoo}&client_id=${Client_ID}&client_secret=${Client_Secret}&v=20180708`
+      `${F_api}/search?ll=47.1745722,20.1946597&intent=browse&radius=10000&limit=5&categoryId=${aquarium},${art_gallery},${cafe},${campground},${library},${museum},${park},${spa},${zoo}&client_id=${Client_ID}&client_secret=${Client_Secret}&v=20180708`
     )
       .then(res => res.json())
       .then(data =>

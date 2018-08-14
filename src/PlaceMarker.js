@@ -43,12 +43,6 @@ handleClick(event, key) {
       })
     })
 
-    /* getDetails(marker.id)
-    .then(data =>
-      ) */
-
-
-
     return (
       <Marker key={marker.title} position={{lat: marker.location.lat, lng: marker.location.lng}}
       onClick={(event, key) => this.handleClick(event, this.props.marker.id)} icon={Markericon} >
