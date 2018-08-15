@@ -4,12 +4,33 @@ import { getDetails } from "./App";
 import Foursquare from "./images/icons/powered-by-foursquare-grey.png";
 
 class PlaceDetails extends Component {
-  state = {
+
+  constructor(props){
+    super(props);
+  
+  this.state = {
     infoDetails: {},
     likes: "",
     description: "",
     bestPhoto: ""
   };
+  }
+
+  componentDidMount() {
+    getDetails(this.props.marker.id).then(data => {
+      const venueLikes = data.likes.summary;
+      const venueDescription = data.description;
+      const bestPhotoURL =
+        `${data.bestPhoto.prefix}300x300${data.bestPhoto.suffix}`
+
+      this.setState({
+        infoDetails: data,
+        likes: venueLikes,
+        description: venueDescription,
+        bestPhoto: bestPhotoURL
+      });
+    });
+  }
 
   render() {
     const props = this.props;
@@ -19,26 +40,15 @@ class PlaceDetails extends Component {
       marker.categories[0].icon.suffix
     }`;
     console.log(marker.id);
-
-    getDetails(props.marker.id).then(data => {
-      const venueLikes = data.likes.summary;
-      const venueDescription = data.description;
-      const bestPhotoURL =
-        "${data.bestPhoto.prefix}300x300{data.bestPhoto.suffix}";
-
-      this.setState({
-        infoDetails: data,
-        likes: venueLikes,
-        description: venueDescription,
-        bestPhoto: bestPhotoURL
-      });
-    });
+    
 
     return (
       <InfoWindow>
         <div className="infowindow">
           <div className="image-wrapper">
-            <img className="best-photo" src={this.state.bestPhoto} alt={marker.name} />
+          <div className="best-photo" >
+            <img src={this.state.bestPhoto} alt={marker.name} />
+            </div>
             <h3 className="venue-name" >{marker.name}</h3>
           </div>
           <div className="details">
