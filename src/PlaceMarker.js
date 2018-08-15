@@ -15,6 +15,7 @@ export default class PlaceMarker extends Component {
       super(props);
   
     this.state= {
+      bounce:'',
       infoWindowOpen: false,
   }
 
@@ -39,13 +40,14 @@ handleClick(event, key) {
     selectedMarker.map(m =>{
       if (m.id===this.props.id) 
       this.setState({
-        infoWindowOpen:!infoWindowOpen
+        infoWindowOpen:!infoWindowOpen,
+        bounce:3
       })
     })
 
     return (
       <Marker key={marker.title} position={{lat: marker.location.lat, lng: marker.location.lng}}
-      onClick={(event, key) => this.handleClick(event, this.props.marker.id)} icon={Markericon} >
+      onClick={(event, key) => this.handleClick(event, this.props.marker.id)} icon={Markericon} animation={this.state.bounce} >
       <React.Fragment>
           {this.state.infoWindowOpen===true&&(
       <PlaceDetails marker={marker}  />

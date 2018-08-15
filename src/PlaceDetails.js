@@ -39,7 +39,6 @@ class PlaceDetails extends Component {
     const categoryIconURL = `${marker.categories[0].icon.prefix}bg_32${
       marker.categories[0].icon.suffix
     }`;
-    console.log(marker.id);
     
 
     return (
