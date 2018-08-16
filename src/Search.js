@@ -2,9 +2,9 @@ import React, { Component } from "react";
 
 
 class Search extends Component {
-  constructor(props) {
+/*   constructor(props) {
     super(props);
-  }
+  } */
 
   handleClick(event, key) {
     this.props.onHandleClick(event, key);
@@ -12,7 +12,7 @@ class Search extends Component {
 
   render() {
     let searchResults = this.props.searchResults;
-    let locationsArray = this.props.locationsArray;
+    /* let locationsArray = this.props.locationsArray; */
 
     /* Returning a list based on the searchResults */
     return (

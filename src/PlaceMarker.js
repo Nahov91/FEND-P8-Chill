@@ -26,7 +26,7 @@ export default class PlaceMarker extends Component {
 /* Handling the click event with a toggle like behaviour
 On click InfoWindow opens or closes based on the boolean */
 handleClick(event, key) {
-    let onMarkerClick = event
+    /* let onClick = event */
     let infoWindowOpen= this.state.infoWindowOpen
     this.setState({infoWindowOpen:!infoWindowOpen})
 }

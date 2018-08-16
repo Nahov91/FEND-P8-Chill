@@ -4,12 +4,12 @@ import PlaceMarker from './PlaceMarker'
 
 class Map extends Component {
 
-constructor(props){
+/* constructor(props){
   super(props);
-}
+} */
 
   render() {
-    console.log(this.props.selectedMarker)
+/*     console.log(this.props.selectedMarker) */
     let selectedMarker = this.props.selectedMarker
     /* Creating Gmaps with its default required props */
     const ChillMap = withGoogleMap(props => (
