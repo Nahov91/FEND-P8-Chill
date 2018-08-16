@@ -15,7 +15,7 @@ class Map extends Component {
     const ChillMap = withGoogleMap(props => (
       <GoogleMap 
         center= {{lat: 47.1745722, lng:20.1946597}} 
-        defaultZoom= {14} options={{gestureHandling: 'greedy'}} >
+        defaultZoom= {14} options={{gestureHandling: 'greedy'}} aria-role="application" >
          {/* Mapping over the search results to create marker(s)  */}
           {this.props.searchResults.map((marker)=>(
         <PlaceMarker 

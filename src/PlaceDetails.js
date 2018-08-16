@@ -46,7 +46,9 @@ class PlaceDetails extends Component {
         <div className="infowindow">
           <div className="image-wrapper">
           <div className="best-photo" >
+          <figure>
             <img src={this.state.bestPhoto} alt={marker.name} />
+            </figure>
             </div>
             <h3 className="venue-name" >{marker.name}</h3>
           </div>

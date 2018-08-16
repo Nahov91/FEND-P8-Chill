@@ -2,6 +2,12 @@
   text-align: center;
 }
 
+figure {
+  margin: 0;
+}
+
+
+
 #header {
   display: grid;
   grid-template-areas: 
@@ -21,6 +27,10 @@
   height: 40px;
   justify-self: center;
 
+}
+
+#logo img {
+  height: 40px;
 }
 
 #menu {
@@ -64,6 +74,7 @@ Map {
   background: rgba(255, 255, 255, 0.9);
   z-index: 2;
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.18);
+  -webkit-backdrop-filter: blur(7px); /* blur behind sidebar, works only on Safari */
 }
 
 .search-components {
@@ -109,8 +120,26 @@ ol {
 
 .search-items-list li:hover {
   background: #9CD501;
+  color: #fff!important;
+}
+
+.search-items-list li h2 {
+  color: #606060;
+  font-size: 1.1rem;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.search-items-list li:hover h2, .search-items-list li:hover address {
   color: #fff;
 }
+
+.search-items-list li address {
+  color: #808080;
+  font-size: 1rem;
+  font-weight: 100;
+}
+
 
 /*********** InfoWindow *********/
 

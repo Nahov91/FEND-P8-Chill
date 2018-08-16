@@ -95,18 +95,14 @@ class App extends Component {
     return (
       <div className="App">
         <header id="header">
-          <a href="" id="menu">
-            <svg width="30" height="30">
-              <path d="M0,5 30,5" stroke="#fff" strokeWidth="5" />
-              <path d="M0,14 30,14" stroke="#fff" strokeWidth="5" />
-              <path d="M0,23 30,23" stroke="#fff" strokeWidth="5" />
-            </svg>
-          </a>
-          <img id="logo" src={logo2} alt="home" />
+        <figure id="logo" >
+          <img src={logo2} alt="home" />
+          </figure>
         </header>
-        <div className="main-content">
-          <div className="sidebar">
+        <main className="main-content">
+          <section className="sidebar">
             <input
+            aria-label="Search"
               id="search-field"
               type="text"
               placeholder="Need some Chill? Search here"
@@ -118,8 +114,8 @@ class App extends Component {
               searchResults={searchResults}
               onHandleClick={this.onHandleClick}
             />
-          </div>
-          <div className="map-wrapper">
+          </section>
+          <section className="map-wrapper">
             <Map
               locationsArray={this.state.locationsArray}
               isMarkerShown={true}
@@ -128,8 +124,8 @@ class App extends Component {
               onHandleClick={this.onHandleClick}
               selectedMarker={this.state.selectedMarker}
             />
-          </div>
-        </div>
+          </section>
+        </main>
       </div>
     );
   }
