@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 
 class Search extends Component {
@@ -18,6 +19,10 @@ class Search extends Component {
     return (
       <div id="search-components">
         <ol className="search-items-list">
+        <ReactCSSTransitionGroup 
+        transitionName="fade" 
+        transitionEnterTimeout={200} 
+        transitionLeaveTimeout={200} >
           {searchResults.map(location => (
             <li 
             key={location.id} 
@@ -26,6 +31,7 @@ class Search extends Component {
               {location.name} 
             </li>
           ))}
+          </ReactCSSTransitionGroup>
         </ol>
       </div>
     );
