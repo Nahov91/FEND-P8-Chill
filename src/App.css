@@ -223,3 +223,23 @@ color: #707070;
 #powered-by {
   grid-area: credits;
 }
+
+@media only screen and (max-width: 765px){
+  .main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "map-wrapper"
+    "sidebar";
+    height:100vh;
+  }
+  .sidebar{
+    position: sticky;
+    top: 250px;
+    margin-top: 500px;
+  }
+
+
+}
+
