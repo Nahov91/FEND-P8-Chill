@@ -29,6 +29,7 @@ class Search extends Component {
             id={location.id}
             onClick={(event, key) => this.handleClick(event, location.id)} >
               {location.name} 
+              <br/>{location.location.address}
             </li>
           ))}
           </ReactCSSTransitionGroup>
