@@ -96,7 +96,9 @@ class App extends Component {
       <div className="App">
         <header id="header">
         <figure id="logo" >
-          <img src={logo2} alt="home" />
+        <a href="/">
+          <img src={logo2} alt="Chill app" />
+          </a>
           </figure>
         </header>
         <main className="main-content">
@@ -115,7 +117,7 @@ class App extends Component {
               onHandleClick={this.onHandleClick}
             />
           </section>
-          <section className="map-wrapper">
+          <section className="map-wrapper" tabIndex="0" >
             <Map
               locationsArray={this.state.locationsArray}
               isMarkerShown={true}

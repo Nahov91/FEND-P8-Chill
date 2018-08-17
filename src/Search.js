@@ -27,7 +27,9 @@ class Search extends Component {
             <li 
             key={location.id} 
             id={location.id}
-            onClick={(event, key) => this.handleClick(event, location.id)} >
+            onKeyPress={(event,key) => this.handleClick(event, location.id) }
+            onClick={(event, key) => this.handleClick(event, location.id)}
+            tabIndex="0" >
               <h2>{location.name}</h2> 
               <br/> <address>{location.location.address}</address>
             </li>

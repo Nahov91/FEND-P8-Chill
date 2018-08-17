@@ -19,7 +19,7 @@ export default class PlaceMarker extends Component {
       infoWindowOpen: false,
   }
 
-  this.handleClick.bind(this)
+  this.handleClick = this.handleClick.bind(this)
 }
 
 

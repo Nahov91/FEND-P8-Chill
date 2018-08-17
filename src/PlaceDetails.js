@@ -43,7 +43,7 @@ class PlaceDetails extends Component {
 
     return (
       <InfoWindow>
-        <div className="infowindow">
+        <div className="infowindow" tabIndex="0" aria-label= {`details of ${marker.name}`}  >
           <div className="image-wrapper">
           <div className="best-photo" >
           <figure>
