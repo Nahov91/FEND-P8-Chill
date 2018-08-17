@@ -3,9 +3,7 @@ import "./App.css";
 import logo2 from "./images/logo2.png";
 import Map from "./Map.js";
 import Search from "./Search";
-import escapeRegExp from 'escape-string-regexp'
-
-
+import escapeRegExp from "escape-string-regexp";
 
 /******* Variables for API *******/
 
@@ -15,7 +13,6 @@ export const Client_ID =
   "FN4ROZROVAWIAMXCRJXOKEZHTB43FJINUINZ3XEYVPJAX1LR"; /* Foursquare Client ID */
 export const Client_Secret =
   "SFYLU0CI32HUT5BOTO1R4R14SDYLTYJC2ACQYQ210HKAJX0Z"; /* Foursquare scret key */
-
 
 /****** Venue categories ******/
 
@@ -31,13 +28,17 @@ export const zoo = "4bf58dd8d48988d17b941735";
 
 /*** Actual fetching likes data from Foursquare */
 /** Needs {venue_Id} */
-export const getDetails= (id)=>{
-  let detailsUrl=`/${id}?&client_id=${Client_ID}&client_secret=${Client_Secret}&v=20180708`
-  return	fetch(`${F_api}${detailsUrl}`)
-  .then(res => res.json())
-  .then(data => data.response.venue)
-  }
-
+export const getDetails = id => {
+  let detailsUrl = `/${id}?&client_id=${Client_ID}&client_secret=${Client_Secret}&v=20180708`;
+  return fetch(`${F_api}${detailsUrl}`)
+    .then(res => res.json())
+    .then(data => data.response.venue)
+    .catch(error =>
+      alert(
+        "Uh-oh! We can't connect to Foursquare to get chill places info for you. Try again in a few seconds! 🐼"
+      )
+    );
+};
 
 class App extends Component {
   constructor(props) {
@@ -46,11 +47,11 @@ class App extends Component {
     this.state = {
       locationsArray: [],
       query: "",
-      detailsArray:[],
-      selectedMarker: ''
-    }
+      detailsArray: [],
+      selectedMarker: ""
+    };
 
-    this.onHandleClick = this.onHandleClick.bind(this)
+    this.onHandleClick = this.onHandleClick.bind(this);
   }
 
   componentDidMount() {
@@ -63,53 +64,59 @@ class App extends Component {
       .then(data =>
         this.setState({
           locationsArray: data.response.venues
-        }))
-        .catch(error=> console.log("venue fetching error = ",error))
-        
+        })
+      )
+      .catch(error =>
+        alert(
+          "Uh-oh! We can't connect to Foursquare to get chill places for you. Try again in a few seconds! 🐼"
+        )
+      );
   }
 
   /* Updates the query to whatever user types in */
   updateQuery(query) {
-    this.setState({ query: query })
+    this.setState({ query: query });
   }
 
-  onHandleClick(event, key){
-    let selectedMarker = this.state.locationsArray.filter(loc=>loc.id===key)
-    this.setState({selectedMarker: selectedMarker})
+  onHandleClick(event, key) {
+    let selectedMarker = this.state.locationsArray.filter(
+      loc => loc.id === key
+    );
+    this.setState({ selectedMarker: selectedMarker });
   }
-
 
   render() {
-    let searchResults
+    let searchResults;
     /* Checking if the locations are not undefined */
-    if (this.state.locationsArray!==undefined) {
+    if (this.state.locationsArray !== undefined) {
       if (this.state.query) {
-        const match = new RegExp(escapeRegExp(this.state.query), 'i')
+        const match = new RegExp(escapeRegExp(this.state.query), "i");
         searchResults = this.state.locationsArray.filter(location =>
-          match.test(location.name))
-        } else {
-          searchResults = this.state.locationsArray;
-        }
+          match.test(location.name)
+        );
+      } else {
+        searchResults = this.state.locationsArray;
       }
+    }
 
     return (
       <div className="App">
         <header id="header">
-        <figure id="logo" >
-        <a href="/">
-          <img src={logo2} alt="Chill app" />
-          </a>
+          <figure id="logo">
+            <a href="/">
+              <img src={logo2} alt="Chill app" />
+            </a>
           </figure>
         </header>
         <main className="main-content">
           <section className="sidebar">
             <input
-            aria-label="Search"
+              aria-label="Search"
               id="search-field"
               type="text"
               placeholder="Need some Chill? Search here"
               value={this.state.query}
-              onChange={(event) => this.updateQuery(event.target.value)}
+              onChange={event => this.updateQuery(event.target.value)}
             />
             <Search
               locationsArray={this.state.locationsArray}
@@ -117,7 +124,7 @@ class App extends Component {
               onHandleClick={this.onHandleClick}
             />
           </section>
-          <section className="map-wrapper" tabIndex="0" >
+          <section className="map-wrapper" tabIndex="0">
             <Map
               locationsArray={this.state.locationsArray}
               isMarkerShown={true}
