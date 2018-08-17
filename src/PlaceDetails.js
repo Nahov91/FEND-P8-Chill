@@ -53,7 +53,7 @@ class PlaceDetails extends Component {
             <h3 className="venue-name" >{marker.name}</h3>
           </div>
           <div className="details">
-            <img className="category-image" src={categoryIconURL} alt={marker.categories[0].name} />
+            <img className="category-image" src={categoryIconURL} alt={`${marker.categories[0].name} category icon`} />
             <h4 className="venue-category">{marker.categories[0].name} </h4>
             <address className="venue-location">
               {marker.location.address}
