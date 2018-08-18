@@ -26,8 +26,8 @@ export const park = "4bf58dd8d48988d163941735";
 export const spa = "4bf58dd8d48988d1ed941735";
 export const zoo = "4bf58dd8d48988d17b941735";
 
-/*** Actual fetching likes data from Foursquare */
-/** Needs {venue_Id} */
+/*** Actual fetching likes data from Foursquare ***/
+
 export const getDetails = id => {
   let detailsUrl = `/${id}?&client_id=${Client_ID}&client_secret=${Client_Secret}&v=20180708`;
   return fetch(`${F_api}${detailsUrl}`)
@@ -55,8 +55,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    /* When the component is mounted we fetch the data from FourSquare */
-    /* If there is an error we are console logging it for now */
+    /* When the component is mounted we fetch the search data from FourSquare */
+    /* If there is an error it gives the user an alert */
     fetch(
       `${F_api}/search?ll=47.1745722,20.1946597&intent=browse&radius=10000&limit=20&categoryId=${aquarium},${art_gallery},${cafe},${campground},${library},${museum},${park},${spa},${zoo}&client_id=${Client_ID}&client_secret=${Client_Secret}&v=20180708`
     )
@@ -78,6 +78,7 @@ class App extends Component {
     this.setState({ query: query });
   }
 
+  /* Handling click event on list items */
   onHandleClick(event, key) {
     let selectedMarker = this.state.locationsArray.filter(
       loc => loc.id === key

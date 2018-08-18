@@ -4,18 +4,16 @@ import PlaceMarker from './PlaceMarker'
 
 class Map extends Component {
 
-/* constructor(props){
-  super(props);
-} */
+
 
   render() {
-/*     console.log(this.props.selectedMarker) */
     let selectedMarker = this.props.selectedMarker
-    /* Creating Gmaps with its default required props */
+    /* Creating Gmaps with its props */
     const ChillMap = withGoogleMap(props => (
       <GoogleMap 
         center= {{lat: 47.1745722, lng:20.1946597}} 
         defaultZoom= {14} options={{gestureHandling: 'greedy'}} aria-role="application" >
+        {/* greedy optin makes map dragabble with one finger */}
          {/* Mapping over the search results to create marker(s)  */}
           {this.props.searchResults.map((marker)=>(
         <PlaceMarker 

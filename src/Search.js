@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 class Search extends Component {
-  /*   constructor(props) {
-    super(props);
-  } */
 
   handleClick(event, key) {
     this.props.onHandleClick(event, key);
@@ -12,7 +9,6 @@ class Search extends Component {
 
   render() {
     let searchResults = this.props.searchResults;
-    /* let locationsArray = this.props.locationsArray; */
 
     /* Returning a list based on the searchResults */
     return (

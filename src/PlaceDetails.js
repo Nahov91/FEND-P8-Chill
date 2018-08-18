@@ -16,10 +16,12 @@ class PlaceDetails extends Component {
   };
   }
 
+  /* if component is mounted we do the fetching of details data */
   componentDidMount() {
     getDetails(this.props.marker.id).then(data => {
       const venueLikes = data.likes.summary;
       const venueDescription = data.description;
+      /* assembling the bestPhoto url */
       const bestPhotoURL =
         `${data.bestPhoto.prefix}300x300${data.bestPhoto.suffix}`
 
@@ -36,6 +38,7 @@ class PlaceDetails extends Component {
     const props = this.props;
     let marker = props.marker;
 
+    /* assembling the category icon url */
     const categoryIconURL = `${marker.categories[0].icon.prefix}bg_32${
       marker.categories[0].icon.suffix
     }`;

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Marker} from 'react-google-maps' 
 import PlaceDetails from './PlaceDetails'
 import Markericon from './images/markers/x64/park.png'
-/* import { F_api, Client_ID, Client_Secret, getLikes, getDetails } from './App' */
 
 export default class PlaceMarker extends Component {
   static propTypes = {
@@ -36,12 +35,13 @@ handleClick(event, key) {
     let infoWindowOpen= this.state.infoWindowOpen
     let selectedMarker = this.props.selectedMarker
 
+    /* bounce is responsible for animating marker on list item click */
     if (selectedMarker && infoWindowOpen === false)
     selectedMarker.map(m =>{
       if (m.id===this.props.id) 
       this.setState({
         infoWindowOpen:!infoWindowOpen,
-        bounce:3
+        bounce:3 
       })
     })
 
