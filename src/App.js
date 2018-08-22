@@ -4,6 +4,7 @@ import logo2 from "./images/logo2.png";
 import Map from "./Map.js";
 import Search from "./Search";
 import escapeRegExp from "escape-string-regexp";
+import MapErrorBoundary from "./MapErrorBoundary";
 
 /******* Variables for API *******/
 
@@ -126,6 +127,7 @@ class App extends Component {
             />
           </section>
           <section className="map-wrapper" tabIndex="0">
+          <MapErrorBoundary>
             <Map
               locationsArray={this.state.locationsArray}
               isMarkerShown={true}
@@ -134,6 +136,7 @@ class App extends Component {
               onHandleClick={this.onHandleClick}
               selectedMarker={this.state.selectedMarker}
             />
+            </MapErrorBoundary>
           </section>
         </main>
       </div>
