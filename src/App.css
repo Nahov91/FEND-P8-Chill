@@ -1,3 +1,4 @@
+/********** GLOBAL **********/
 .App {
   text-align: center;
 }
@@ -6,18 +7,16 @@ figure {
   margin: 0;
 }
 
-
-
+/*********** HEADER ***********/
 #header {
   display: grid;
-  grid-template-areas: 
-  "menu logo";
+  grid-template-areas: "menu logo";
   grid-gap: 20px;
   grid-template-rows: 1fr;
   grid-template-columns: auto 1fr;
   width: 100%;
   height: 40px;
-  background: #9CD501;
+  background: #9cd501;
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.18);
   z-index: 5;
   position: fixed;
@@ -26,31 +25,24 @@ figure {
   grid-area: logo;
   height: 40px;
   justify-self: center;
-
 }
 
 #logo img {
   height: 40px;
 }
 
-#menu {
-  grid-area: menu;
-  justify-self: center;
-  align-self: center;
-  padding-left: 10px;
-}
-
-Map {
-  width: 100vw;
-  height: 100vh;
-}
-
+/************ MAIN CONTENT *************/
 .main-content {
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-areas: 
-  "sidebar map-wrapper";
-  height:100vh;
+  grid-template-areas: "sidebar map-wrapper";
+  height: 100vh;
+}
+
+/************ MAP *************/
+map {
+  width: 100vw;
+  height: 100vh;
 }
 
 .map-wrapper {
@@ -60,34 +52,36 @@ Map {
   position: fixed;
 }
 
+/********** SIDEBAR ***********/
 .sidebar {
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: auto;
   grid-area: sidebar;
-  grid-template-areas: 
-  "search"
-  "searchComponents"
-  "infoBox";
+  grid-template-areas:
+    "search"
+    "searchComponents"
+    "infoBox";
   height: 100%;
   padding-top: 45px;
   background: rgba(255, 255, 255, 0.9);
   z-index: 2;
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.18);
-  -webkit-backdrop-filter: blur(7px); /* blur behind sidebar, works only on Safari */
+  -webkit-backdrop-filter: blur(
+    7px
+  ); /* blur behind sidebar, works only on Safari */
 }
 
 .search-components {
   display: grid;
   grid-area: searchComponents;
-  grid-template-areas:
-  "list";
-  align-items:start; 
+  grid-template-areas: "list";
+  align-items: start;
 }
 
 #search-field {
   position: sticky;
-  top:45px;
+  top: 45px;
   grid-area: search;
   height: 28px;
   width: 90%;
@@ -99,30 +93,32 @@ Map {
 }
 
 .search-items-list {
-grid-area: list;
-align-self: start;
+  grid-area: list;
+  align-self: start;
 }
 
 ol {
   list-style-type: none;
-  padding:0;
+  padding: 0;
   text-align: left;
   margin: 10px;
 }
 
+/*********** SEARCH ITEMS LIST ***********/
+/* List items */
 .search-items-list li {
-  border-top:1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
   padding: 6px 0;
   cursor: pointer;
   padding-left: 5px;
   border-radius: 3px;
 }
-
+/* List items hovered */
 .search-items-list li:hover {
-  background: #9CD501;
-  color: #fff!important;
+  background: #9cd501;
+  color: #fff !important;
 }
-
+/* List item names */
 .search-items-list li h2 {
   color: #606060;
   font-size: 1.1rem;
@@ -130,43 +126,43 @@ ol {
   text-transform: capitalize;
 }
 
-.search-items-list li:hover h2, .search-items-list li:hover address {
+/* List item names hovered */
+.search-items-list li:hover h2,
+.search-items-list li:hover address {
   color: #fff;
 }
 
+/* List item addresses */
 .search-items-list li address {
   color: #808080;
   font-size: 1rem;
   font-weight: 100;
 }
 
-
-/*********** InfoWindow *********/
-
+/*********** INFO WINDOW *********/
+/* Infowindow base */
 .gm-style-iw {
   margin: 0;
   padding: 0;
   width: 100%;
 }
-
-
-
+/* Infowindow grid */
 .infowindow {
   display: grid;
   grid-gap: 5px;
   grid-template-rows: 1fr auto auto auto auto;
   grid-template-columns: 1fr;
-  grid-template-areas: 
-  "bestPhoto"
-  "details"
-  "description"
-  "likes"
-  "credits";
+  grid-template-areas:
+    "bestPhoto"
+    "details"
+    "description"
+    "likes"
+    "credits";
   padding: 0;
   margin: 0;
-  width: 100%!important;
+  width: 100% !important;
 }
-
+/* Best Photo wrapper */
 .image-wrapper {
   grid-area: bestPhoto;
   display: grid;
@@ -176,12 +172,11 @@ ol {
   width: 200px;
   margin: 0;
 }
-
+/* Wrapped image */
 .image-wrapper > div > img {
   width: 200px;
-
 }
-
+/* Best photo */
 .best-photo {
   grid-area: bestImage;
   grid-row: 1/3;
@@ -190,8 +185,8 @@ ol {
   width: 200px;
   object-fit: cover;
   overflow: hidden;
- 
 }
+/* Venue name */
 .venue-name {
   grid-area: venueName;
   grid-row: 2/3;
@@ -203,67 +198,82 @@ ol {
   text-transform: uppercase;
   text-align: end;
   letter-spacing: 1px;
-  margin:0;
+  margin: 0;
   padding: 5px;
-  background: -moz-linear-gradient(top, rgba(0,0,0,0) 17%, rgba(0,0,0,0) 21%, rgba(0,0,0,0.65) 100%);
-  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 17%,rgba(0,0,0,0) 21%,rgba(0,0,0,0.65) 100%);
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 17%,rgba(0,0,0,0) 21%,rgba(0,0,0,0.65) 100%);
+  background: -moz-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 17%,
+    rgba(0, 0, 0, 0) 21%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 17%,
+    rgba(0, 0, 0, 0) 21%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 17%,
+    rgba(0, 0, 0, 0) 21%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
 }
-
+/* Details */
 .details {
   grid-area: details;
   display: grid;
   grid-gap: 3px;
   grid-template-rows: auto 1fr;
   grid-template-columns: auto 1fr;
-  grid-template-areas: 
-  "categoryImage venueCategory"
-  "categoryImage venueLocation";
+  grid-template-areas:
+    "categoryImage venueCategory"
+    "categoryImage venueLocation";
   padding: 0 5px;
   text-align: left;
 }
-
+/* Category Image */
 .category-image {
   grid-area: categoryImage;
-
 }
-
+/* Category */
 .venue-category {
-grid-area: venueCategory;
-line-height: 1em;
-margin: 2px;
-color: #707070;
+  grid-area: venueCategory;
+  line-height: 1em;
+  margin: 2px;
+  color: #707070;
 }
-
+/* Location */
 .venue-location {
   grid-area: venueLocation;
   color: #707070;
   font-weight: 100;
 }
-
+/* Description */
 .description {
   grid-area: description;
 }
-
+/* Likes */
 .likes {
   grid-area: likes;
 }
-
+/* Credits */
 #powered-by {
   grid-area: credits;
 }
 
-@media only screen and (max-width: 765px){
+/********* Mobile UI reflow **********/
+@media only screen and (max-width: 765px) {
   .main-content {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
-    grid-template-areas: 
-    "map-wrapper"
-    "sidebar";
-    height:100vh;
+    grid-template-areas:
+      "map-wrapper"
+      "sidebar";
+    height: 100vh;
   }
-  .sidebar{
+  .sidebar {
     position: sticky;
     top: 250px;
     margin-top: 80vh;
@@ -272,30 +282,28 @@ color: #707070;
     height: auto;
     box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.28);
   }
-
-
 }
 
-/********** Transitions **********/
+/********** TRANSITIONS **********/
 .fade-enter {
-  opacity:0;
+  opacity: 0;
 }
 
 .fade-enter-active {
-opacity:1;
-transition: all 200ms ease-out;
+  opacity: 1;
+  transition: all 200ms ease-out;
 }
 
 .fade-leave {
-opacity: 1;
+  opacity: 1;
 }
 
 .fade-leave-active {
-opacity: 0;
-transition: all 200ms ease-out;
+  opacity: 0;
+  transition: all 200ms ease-out;
 }
 
+/********* ERROR HANDLING **********/
 #mapError {
   margin: 70px;
-  
 }
