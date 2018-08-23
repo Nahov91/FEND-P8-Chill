@@ -3,7 +3,7 @@
 Chill is a progressive web app that helps you find calming places like cafes, parks, art galleries, spas, etc.
 
 ### What was it made for?
-This is my submission for Project 8 at Udacity FEND Google Scholarship. Our job was to create a map web app with locations and information about the places. This information have to be fetched from a third party database.
+This is my submission for Project 8 called "Neighborhood Map" at Udacity FEND Google Scholarship. Our job was to create a map web app with locations and information about the places. This information have to be fetched from a third party database.
 
 ## How to install this application?
 To install this program you have to have npm installed on your computer. You have to use these commands in the console to run it :
@@ -21,6 +21,9 @@ then follow the console instructions.
 
 ## What technologies is this built with?
 This app was created by create react app and uses React.js.
+
+## Used API
+This app uses Google Maps API and Foursquare API to get and display the data.
 
 ## Contributing 
 As this is a study project I will _not_ accept pull requests.
@@ -60,3 +63,5 @@ https://www.robinwieruch.de/react-fetching-data/
 
 React base concepts
 https://www.leveluptutorials.com/store/products/tutorials/lut-dd016
+
+Also big thanks to Eman Mohamed Abd El Salam Zaghloul, whos study jam helped me to understand the problems we have to solve a lot faster.

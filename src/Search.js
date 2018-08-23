@@ -12,7 +12,7 @@ class Search extends Component {
     /* Returning a list based on the searchResults */
     return (
       <div id="search-components">
-        <ol className="search-items-list">
+        <ol className="search-items-list" role="list" >
           <ReactCSSTransitionGroup
             transitionName="fade"
             transitionEnterTimeout={200}
