@@ -7,6 +7,10 @@ figure {
   margin: 0;
 }
 
+.emoji {
+  font-size: 100px;
+}
+
 /*********** HEADER ***********/
 #header {
   display: grid;

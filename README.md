@@ -6,7 +6,7 @@ Chill is a progressive web app that helps you find calming places like cafes, pa
 This is my submission for Project 8 at Udacity FEND Google Scholarship. Our job was to create a map web app with locations and information about the places. This information have to be fetched from a third party database.
 
 ## How to install this application?
-To install this program you have to have npm installed on your computer. You have to use these commands to run it :
+To install this program you have to have npm installed on your computer. You have to use these commands in the console to run it :
 ```
 npm install
 npm start
@@ -15,8 +15,9 @@ With this you can run the web app, but you won’t get all the functions of it.
 
 To have a service worker you have to run 
 ```
-npm build
+npm run build
 ```
+then follow the console instructions.
 
 ## What technologies is this built with?
 This app was created by create react app and uses React.js.

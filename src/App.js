@@ -27,7 +27,7 @@ export const park = "4bf58dd8d48988d163941735";
 export const spa = "4bf58dd8d48988d1ed941735";
 export const zoo = "4bf58dd8d48988d17b941735";
 
-/*** Actual fetching likes data from Foursquare ***/
+/*** Fetching details data from Foursquare ***/
 
 export const getDetails = id => {
   let detailsUrl = `/${id}?&client_id=${Client_ID}&client_secret=${Client_Secret}&v=20180708`;
@@ -127,15 +127,15 @@ class App extends Component {
             />
           </section>
           <section className="map-wrapper" tabIndex="0">
-          <MapErrorBoundary>
-            <Map
-              locationsArray={this.state.locationsArray}
-              isMarkerShown={true}
-              onMarkerClick={this.toggleInfoWindow}
-              searchResults={searchResults}
-              onHandleClick={this.onHandleClick}
-              selectedMarker={this.state.selectedMarker}
-            />
+            <MapErrorBoundary>
+              <Map
+                locationsArray={this.state.locationsArray}
+                isMarkerShown={true}
+                onMarkerClick={this.toggleInfoWindow}
+                searchResults={searchResults}
+                onHandleClick={this.onHandleClick}
+                selectedMarker={this.state.selectedMarker}
+              />
             </MapErrorBoundary>
           </section>
         </main>

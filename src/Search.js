@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 class Search extends Component {
-
   handleClick(event, key) {
     this.props.onHandleClick(event, key);
   }

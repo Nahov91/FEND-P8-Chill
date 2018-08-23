@@ -8,8 +8,7 @@ export default class MapErrorBoundary extends Component {
 
   componentDidCatch(error, info) {
     this.setState({ hasError: true });
-    console.log('gMapsError: ', error);
-    
+    console.log("gMapsError: ", error);
   }
 
   render() {
@@ -19,8 +18,9 @@ export default class MapErrorBoundary extends Component {
           <h1>Something went wrong</h1>
           <h4>
             Unfortunately the map can't be loaded. Please check back in a few
-            minutes. 🐼
+            minutes.
           </h4>
+          <p className="emoji">🐼</p>
         </div>
       );
     }
