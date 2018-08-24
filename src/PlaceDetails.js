@@ -50,27 +50,27 @@ class PlaceDetails extends Component {
           tabIndex="0"
           aria-label={`details of ${marker.name}`}
         >
-          <div className="image-wrapper">
+          <section className="image-wrapper">
             <div className="best-photo">
               <figure>
                 <img src={this.state.bestPhoto} alt={marker.name} />
               </figure>
             </div>
             <h3 className="venue-name">{marker.name}</h3>
-          </div>
-          <div className="details">
+          </section>
+          <section className="details">
             <img
               className="category-image"
               src={categoryIconURL}
               alt={`${marker.categories[0].name} category icon`}
             />
-            <h4 className="venue-category">{marker.categories[0].name} </h4>
-            <address className="venue-location">
+            <h4 className="venue-category" tabIndex="0" >{marker.categories[0].name} </h4>
+            <address className="venue-location" tabIndex="0" >
               {marker.location.address}
             </address>
-          </div>
-          <p className="description"> {this.state.description} </p>
-          <p className="likes">{this.state.likes} </p>
+          </section>
+          <p className="description" tabIndex="0" > {this.state.description} </p>
+          <p className="likes" tabIndex="0" >{this.state.likes} </p>
           <img id="powered-by" src={Foursquare} alt="Powered by Foursquare" />
         </div>
       </InfoWindow>
